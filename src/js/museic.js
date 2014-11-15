@@ -10,7 +10,10 @@ var Mosaic = function (opt) {
 		x: opt.x,
 		y: opt.y,
 
-		border: opt.border || 0
+		border: opt.border || 0,
+
+		click: opt.click,
+		delegateData: {},
 
 	};
 
@@ -53,7 +56,7 @@ var Mosaic = function (opt) {
 	};
 
 	var doTheMagic = function() {
-		var map, r, c, rnd, coords, coord, divs, div, bg, dim = {};
+		var map, r, c, rnd, coords, coord, divs, div, bg, dim = {}, data, id = 0;
 
 		// allocate the mapping grid and "remaining" coordinates
 		map = new Array(o.y);
@@ -85,6 +88,10 @@ var Mosaic = function (opt) {
 			// free, create divs
 			div = document.createElement('div');
 			bg = document.createElement('div');
+			data = o.imgs.pop();
+
+			div.id = id++;
+			o.delegateData[div.id] = data;
 
 			// from this coordinate, try to "grow" the rectangle in one of four directions,
 			// with equal probability. growth stops once an obstacle is found.
@@ -158,11 +165,18 @@ var Mosaic = function (opt) {
 
 			bg.className = 'museic-bg';
 			bg.style.top = bg.style.right = bg.style.bottom = bg.style.left = o.border + 'px';
-			bg.style.backgroundImage = "url('" + o.imgs.pop() + "')";
+			bg.style.backgroundImage = "url('" + data.url + "')";
 
 			// save the div
 			div.appendChild(bg);
 			divs.appendChild(div);
+		}
+
+		// register event listeners
+		if (o.click) {
+			divs.addEventListener('click', function(event) {
+				o.click(o.delegateData[event.target.id || event.target.parentNode.id]);
+			});
 		}
 
 		o.elem.appendChild(divs);
