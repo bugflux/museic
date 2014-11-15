@@ -1,11 +1,11 @@
 /**
- * Museic renders mosaic from source images. Documentation coming soon.
+ * Museic renders mosaic from source images.
  */
 var Mosaic = function(opt) {
 	var o = {
 		
 		elem: opt.elem,
-		imgs: opt.imgs,
+		data: opt.data,
 
 		x: opt.x,
 		y: opt.y,
@@ -76,7 +76,7 @@ var Mosaic = function(opt) {
 		}
 
 		shuffle(coords);
-		shuffle(o.imgs);
+		shuffle(o.data);
 
 		divs = document.createElement('div');
 
@@ -91,7 +91,7 @@ var Mosaic = function(opt) {
 			// free, create divs
 			div = document.createElement('div');
 			bg = document.createElement('div');
-			data = o.imgs.pop();
+			data = o.data.pop();
 
 			div.id = id++;
 			o.delegateData[div.id] = data;

@@ -5,8 +5,8 @@ window.onload = function() {
 
 	var click = function(data) { window.location = data.url };
 	new Mosaic({
-		x: 5,
-		y: 5,
+		x: 8,
+		y: 7,
 
 		border: 5, // optional. default: 0
 		events: {
@@ -14,7 +14,7 @@ window.onload = function() {
 		},
 
 		elem: div,
-		imgs: [
+		data: [
 			{url:'https://farm6.staticflickr.com/5579/14945523969_e5f92943f2_z.jpg',
 			},{url:'https://farm4.staticflickr.com/3923/15132225545_3c6538edac_z.jpg',
 			},{url:'https://farm4.staticflickr.com/3914/14686905465_fc86ab96e4_z.jpg',
