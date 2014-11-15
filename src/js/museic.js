@@ -1,7 +1,7 @@
 /**
  * Museic renders mosaic from source images. Documentation coming soon.
  */
-var Mosaic = function (opt) {
+var Mosaic = function(opt) {
 	var o = {
 		
 		elem: opt.elem,
@@ -18,7 +18,7 @@ var Mosaic = function (opt) {
 	};
 
 	// perform N swaps
-	var shuffle = function (array) {
+	var shuffle = function(array) {
 		var r, other, buff;
 		for (r = 0; r < array.length; r++)	{
 			other = Math.floor(Math.random() * array.length);
@@ -28,7 +28,7 @@ var Mosaic = function (opt) {
 		}
 	};
 
-	var tagMapPositions = function (map, coord, dim) {
+	var tagMapPositions = function(map, coord, dim) {
 		var r, c;
 		for (r = 0; r < dim.h; r++) {
 			for (c = 0; c < dim.w; c++) {
@@ -37,7 +37,7 @@ var Mosaic = function (opt) {
 		}
 	};
 
-	var colCollides = function (map, coord, dim) {
+	var colCollides = function(map, coord, dim) {
 		var r;
 		for (r = 0; r < dim.h; r++) {
 			if (map[coord.y + r][coord.x]) {
@@ -45,7 +45,7 @@ var Mosaic = function (opt) {
 			}
 		}
 		return false;
-	}, rowCollides = function (map, coord, dim) {
+	}, rowCollides = function(map, coord, dim) {
 		var c;
 		for (c = 0; c < dim.w; c++) {
 			if (map[coord.y][coord.x + c]) {
