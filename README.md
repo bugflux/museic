@@ -53,6 +53,6 @@ Mosaic({
 Given the X, Y dimensions of the desired grid, and at least X * Y images, the algorithm proceeds as follows:
 
 1. Pick an unused (X, Y) coordinate randomly, to start to try and place an image.
-2. The algorithm picks one direction (up, down, left, right), with equal probability, and checks if the image can grow one square in that direction. If it can, this step is repeated, if not proceed.
-3. One of the provided images is removed from the list and placed on the computed space.
+2. Pick one direction (up, down, left, right), with equal probability, and check if the image can grow one square in that direction. If it can, repeat, otherwise proceed.
+3. Remove one of the images from the list and render on the determined space.
 4. Repeat from step 2 until no more coordinates are left blank.
