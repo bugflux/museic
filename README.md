@@ -59,4 +59,4 @@ Given the X, Y dimensions of the desired grid, and at least X * Y images, the al
 
 ### Notes
 
-Step (1) of the algorithm can in fact hit an occupied coordinate, but it never does so twice on the same coordinate. In short, steps 1-4 run exactly X*Y times, but the coordinate is truly randomly picked.
+Step (1) of the algorithm can in fact hit an occupied coordinate, but it never does so twice on the same coordinate. In short, step 1 runs exactly X*Y times, and the coordinate is truly randomly picked.
