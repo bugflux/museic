@@ -11,8 +11,8 @@ Preview [here](https://rawgit.com/bugflux/museic/master/example/index.html)
 Right now Mosaic can be invoked as a function and accepts a single object as parameter with all the options. First import the files.
 
 ```html
-	<script src="js/museic.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/museic.css">
+<script src="js/museic.js"></script>
+<link rel="stylesheet" type="text/css" href="css/museic.css">
 ```
 
 Then call it.
