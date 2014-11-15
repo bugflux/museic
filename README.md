@@ -59,4 +59,12 @@ Given the X, Y dimensions of the desired grid, and at least X * Y images, the al
 
 ### Notes
 
-Step (1) of the algorithm can in fact hit an occupied coordinate, but it never does so twice on the same coordinate. In short, step 1 runs exactly X*Y times, and the coordinate is truly randomly picked.
+#### Performance
+Step (1) of the algorithm can in fact hit an occupied coordinate, but it never does so twice on the same coordinate. In short, step (1) runs exactly X*Y times, and the coordinate is truly randomly picked.
+
+#### Visuals
+The selected image at each position is placed as a "background" of a div with the "background-size: cover" and "background-position: center" CSS options.
+
+In my perspective, "cover" is the best option for the sizing of the image, as it guarantees that the entire background area is covered, while scaling and cropping appropriately to fit the image completely in at least one direction.
+
+As for the "center" option, it really depends, because in photography there are many advocates of rules that don't fit quite well here, such as the rule of thirds, golden ratio, fibonacci, etc... Change however you like, and be sure to play with the number of possible horizontal and vertical images to better fit the aspect ratio of your pictures.
