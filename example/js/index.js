@@ -9,7 +9,9 @@ window.onload = function() {
 		y: 5,
 
 		border: 5, // optional. default: 0
-		click: click,
+		events: {
+			click: click
+		},
 
 		elem: div,
 		imgs: [

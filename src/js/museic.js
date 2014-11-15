@@ -12,7 +12,7 @@ var Mosaic = function (opt) {
 
 		border: opt.border || 0,
 
-		click: opt.click,
+		events: opt.events,
 		delegateData: {},
 
 	};
@@ -173,9 +173,11 @@ var Mosaic = function (opt) {
 		}
 
 		// register event listeners
-		if (o.click) {
-			divs.addEventListener('click', function(event) {
-				o.click(o.delegateData[event.target.id || event.target.parentNode.id]);
+		if (o.events) {
+			Object.keys(o.events).forEach(function(v) {
+				divs.addEventListener(v, function(event) {
+					o.events[v](o.delegateData[event.target.id || event.target.parentNode.id]);
+				});
 			});
 		}
 
