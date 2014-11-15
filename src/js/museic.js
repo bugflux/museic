@@ -154,10 +154,10 @@ var Mosaic = function (opt) {
 			// style div according to those limits
 			div.className = "museic-tile";
 			div.style.position = 'absolute';
-			div.style.top = ((coord.y * 100) / o.y + 0.5) + '%';
-			div.style.left = ((coord.x * 100) / o.x + 0.5) + '%';
-			div.style.height = ((dim.h * 100) / o.y - 1) + '%';
-			div.style.width = ((dim.w * 100) / o.x - 1) + '%';
+			div.style.top = ((coord.y * 100) / o.y) + '%';
+			div.style.left = ((coord.x * 100) / o.x) + '%';
+			div.style.height = ((dim.h * 100) / o.y) + '%';
+			div.style.width = ((dim.w * 100) / o.x) + '%';
 
 			div.style.backgroundImage = "url('" + prefetch(o.imgs.pop()) + "')";
 
