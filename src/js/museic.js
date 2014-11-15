@@ -179,7 +179,7 @@ var Mosaic = function(opt) {
 		if (o.events) {
 			Object.keys(o.events).forEach(function(v) {
 				divs.addEventListener(v, function(event) {
-					o.events[v](o.delegateData[event.target.parentNode.id]);
+					o.events[v](event, o.delegateData[event.target.parentNode.id]);
 				});
 			});
 		}

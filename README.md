@@ -37,8 +37,9 @@ Mosaic({
 	],
 
 	// optional. handlers for DOM events on each image. All DOM events are supported.
-	// handlers receive one parameter corresponding to the data of an image,
-	// provided by the user in the "data" parameter
+	// handlers are of the form "function(event, data)", where 'event' is the original event
+	// triggered by the browserm and 'data' is the corresponding object provided in the initial
+	// options allocated to the acted coordinate
 	events: {
 		click: _callback
 		// ...

@@ -3,7 +3,7 @@ window.onload = function() {
 	var div = document.createElement('div');
 	div.id = 'container';
 
-	var click = function(data) { window.location = data.url };
+	var click = function(event, data) { window.location = data.url };
 	new Mosaic({
 		x: 8,
 		y: 7,
