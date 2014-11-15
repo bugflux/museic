@@ -56,3 +56,7 @@ Given the X, Y dimensions of the desired grid, and at least X * Y images, the al
 2. Pick one direction (up, down, left, right), with equal probability, and check if the image can grow one square in that direction. If it can, repeat, otherwise proceed.
 3. Remove one of the images from the list and render on the determined space.
 4. Repeat from step 2 until no more coordinates are left blank.
+
+### Notes
+
+Step (1) of the algorithm can in fact hit an occupied coordinate, but it never does so twice on the same coordinate. In short, steps 1-4 run exactly X*Y times, but the coordinate is truly randomly picked.
