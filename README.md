@@ -1,7 +1,7 @@
 museic
 ======
 
-Museic is a Javascript image mosaic builder.
+Museic is a Javascript image mosaic builder focused on randomness within a limited area.
 Documentation coming soon.
 
 
