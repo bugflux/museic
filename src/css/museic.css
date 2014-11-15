@@ -1,4 +1,9 @@
 .museic-tile {
+	position: absolute;
+}
+
+.museic-bg {
+	position: absolute;
 	background-position: center;
 	background-size: cover;
 }

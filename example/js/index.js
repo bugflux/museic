@@ -7,6 +7,8 @@ window.onload = function() {
 		x: 5,
 		y: 5,
 
+		border: 5,
+
 		elem: div,
 		imgs: [
 			'https://farm6.staticflickr.com/5579/14945523969_e5f92943f2_z.jpg',
