@@ -19,8 +19,8 @@ var Mosaic = function(opt) {
 
 	// perform N swaps
 	var shuffle = function(array) {
-		var r, other, buff;
-		for (r = 0; r < array.length; r++)	{
+		var r = array.length, other, buff;
+		while (--r >= 0) {
 			other = Math.floor(Math.random() * array.length);
 			buff = array[r];
 			array[r] = array[other];
@@ -29,26 +29,27 @@ var Mosaic = function(opt) {
 	};
 
 	var tagMapPositions = function(map, coord, dim) {
-		var r, c;
-		for (r = 0; r < dim.h; r++) {
-			for (c = 0; c < dim.w; c++) {
-				map[coord.y + r][coord.x + c] = true;
+		var r = dim.h + coord.y, c;
+		while (--r >= coord.y) {
+			c = dim.w + coord.x;
+			while (--c >= coord.x) {
+				map[r][c] = true;
 			}
 		}
 	};
 
 	var colCollides = function(map, coord, dim) {
-		var r;
-		for (r = 0; r < dim.h; r++) {
-			if (map[coord.y + r][coord.x]) {
+		var r = dim.h + coord.y;
+		while (--r >= coord.y) {
+			if (map[r][coord.x]) {
 				return true;
 			}
 		}
 		return false;
 	}, rowCollides = function(map, coord, dim) {
-		var c;
-		for (c = 0; c < dim.w; c++) {
-			if (map[coord.y][coord.x + c]) {
+		var c = dim.w + coord.x;
+		while (--c >= coord.x) {
+			if (map[coord.y][c]) {
 				return true;
 			}
 		}
@@ -61,10 +62,12 @@ var Mosaic = function(opt) {
 		// allocate the mapping grid and "remaining" coordinates
 		map = new Array(o.y);
 		coords = [];
-		for (r = 0; r < o.y; r++) {
+		r = o.y;
+		while (--r >= 0) {
 			map[r] = new Array(o.x);
 
-			for (c = 0; c < o.x; c++){
+			c = o.x;
+			while (--c >= 0) {
 				coords.push({
 					x: c,
 					y: r
