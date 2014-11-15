@@ -12,11 +12,6 @@ var Mosaic = function (opt) {
 
 	};
 
-	var prefetch = function (link) {
-		(new Image()).src = link;
-		return link;
-	};
-
 	// perform N swaps
 	var shuffle = function (array) {
 		var r, other, buff;
@@ -159,7 +154,7 @@ var Mosaic = function (opt) {
 			div.style.height = ((dim.h * 100) / o.y) + '%';
 			div.style.width = ((dim.w * 100) / o.x) + '%';
 
-			div.style.backgroundImage = "url('" + prefetch(o.imgs.pop()) + "')";
+			div.style.backgroundImage = "url('" + o.imgs.pop() + "')";
 
 			// save the div
 			divs.appendChild(div);
