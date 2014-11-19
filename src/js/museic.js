@@ -79,6 +79,7 @@ var Mosaic = function(opt) {
 		shuffle(o.data);
 
 		divs = document.createElement('div');
+		divs.className = 'museic-container';
 
 		while(coords.length > 0) {
 			coord = coords.pop();
