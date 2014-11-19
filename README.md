@@ -28,10 +28,10 @@ Mosaic({
 	// additional data may be added in other parameters for use in the event handlers.
 	data: [
 		{
-			url: 'https://farm6.staticflickr.com/5579/14945523969_e5f92943f2_z.jpg',
+			url: 'https://farm6.staticflickr.com/5579/14945523969_e5f92943f2_z.jpg'
 		},
 		{
-			url: 'https://farm4.staticflickr.com/3923/15132225545_3c6538edac_z.jpg',
+			url: 'https://farm4.staticflickr.com/3923/15132225545_3c6538edac_z.jpg'
 		}
 		// ...
 	],
