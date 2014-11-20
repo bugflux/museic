@@ -21,8 +21,8 @@ Then call it.
 Mosaic({
 	elem: _div, // mandatory. the DOM element where the mosaic will be added
 
-	x: 8, // mandatory. max number of images horizontally
-	y: 7, // mandatory. max number of images vertically
+	x: 6, // mandatory. max number of images horizontally
+	y: 5, // mandatory. max number of images vertically
 
 	// mandatory. the list of, at least, x * y objects containing each image identified by "url"
 	// additional data may be added in other parameters for use in the event handlers.
@@ -44,6 +44,9 @@ Mosaic({
 		click: _callback
 		// ...
 	},
+
+	xMax: 6, // optional (default = x). maximum width (in grid elements) for each individual element
+	yMax: 5, // optional (default = y). maximum height (in grid elements) for each individual element
 
 	border: 5 // optional (default = 0). blank pixels around each image 
 });

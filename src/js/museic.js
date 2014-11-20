@@ -10,6 +10,9 @@ var Mosaic = function(opt) {
 		x: opt.x,
 		y: opt.y,
 
+		xMax: opt.xMax || opt.x,
+		yMax: opt.yMax || opt.y,
+
 		border: opt.border || 0,
 
 		events: opt.events,
@@ -101,11 +104,11 @@ var Mosaic = function(opt) {
 			// with equal probability. growth stops once an obstacle is found.
 			dim.w = dim.h = 1;
 
-			while (true) {
+			while (dim.w <= o.xMax && dim.h <= o.yMax) {
 				rnd = Math.random();
 				if (rnd >= 0.75) {
 					// test w+1 right
-					if (coord.x + dim.w === o.x) {
+					if (coord.x + dim.w === o.x || dim.w + 1 > o.xMax) {
 						break;
 					}
 
@@ -117,7 +120,7 @@ var Mosaic = function(opt) {
 
 				} else if (rnd >= 0.5) {
 					// test w+1 left
-					if (coord.x === 0) {
+					if (coord.x === 0 || dim.w + 1 > o.xMax) {
 						break;
 					}
 
@@ -131,7 +134,7 @@ var Mosaic = function(opt) {
 
 				} else if (rnd >= 0.25) {
 					// test h+1 down
-					if (coord.y + dim.h === o.y) {
+					if (coord.y + dim.h === o.y || dim.h + 1 > o.yMax) {
 						break;
 					}
 
@@ -143,7 +146,7 @@ var Mosaic = function(opt) {
 
 				} else {
 					// test h+1 up
-					if (coord.y === 0) {
+					if (coord.y === 0 || dim.h + 1 > o.yMax) {
 						break;
 					}
 

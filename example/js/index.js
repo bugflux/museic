@@ -5,8 +5,11 @@ window.onload = function() {
 
 	var click = function(event, data) { window.location = data.url };
 	new Mosaic({
-		x: 8,
-		y: 7,
+		x: 6,
+		y: 4,
+
+		xMax: 6, // optional. default: x
+		yMax: 4, // optional. default: y
 
 		border: 5, // optional. default: 0
 		events: {
