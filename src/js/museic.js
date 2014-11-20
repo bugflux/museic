@@ -29,9 +29,7 @@ var Mosaic = function(opt) {
 			array[r] = array[other];
 			array[other] = buff;
 		}
-	};
-
-	var tagMapPositions = function(map, coord, dim) {
+	}, tagMapPositions = function(map, coord, dim) {
 		var r = dim.h + coord.y, c;
 		while (--r >= coord.y) {
 			c = dim.w + coord.x;
@@ -39,9 +37,7 @@ var Mosaic = function(opt) {
 				map[r][c] = true;
 			}
 		}
-	};
-
-	var colCollides = function(map, coord, dim) {
+	}, colCollides = function(map, coord, dim) {
 		var r = dim.h + coord.y;
 		while (--r >= coord.y) {
 			if (map[r][coord.x]) {
@@ -57,9 +53,7 @@ var Mosaic = function(opt) {
 			}
 		}
 		return false;
-	};
-
-	var doTheMagic = function() {
+	}, doTheMagic = function() {
 		var map, r, c, rnd, coords, coord, divs, div, bg, dim = {}, data, id = 0;
 
 		// allocate the mapping grid and "remaining" coordinates
