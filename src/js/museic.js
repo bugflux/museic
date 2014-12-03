@@ -5,7 +5,7 @@ var Mosaic = function(opt) {
 	var o = {
 		
 		elem: opt.elem,
-		data: opt.data,
+		provider: opt.provider,
 
 		x: opt.x,
 		y: opt.y,
@@ -13,10 +13,7 @@ var Mosaic = function(opt) {
 		xMax: opt.xMax || opt.x,
 		yMax: opt.yMax || opt.y,
 
-		border: opt.border || 0,
-
-		events: opt.events,
-		delegateData: {},
+		border: opt.border || 0
 
 	};
 
@@ -53,8 +50,12 @@ var Mosaic = function(opt) {
 			}
 		}
 		return false;
+	}, queryAndAppend = function(elem, provider, params) {
+		return function() {
+			elem.appendChild(provider.get(params));
+		};
 	}, doTheMagic = function() {
-		var map, r, c, rnd, coords, coord, divs, div, bg, dim = {}, data, id = 0;
+		var map, r, c, rnd, coords, coord, divs, div, bg, dim = {}, id = 0;
 
 		// allocate the mapping grid and "remaining" coordinates
 		map = new Array(o.y);
@@ -73,10 +74,11 @@ var Mosaic = function(opt) {
 		}
 
 		shuffle(coords);
-		shuffle(o.data);
 
 		divs = document.createElement('div');
-		divs.className = 'museic-container';
+		divs.style.position = 'relative';
+		divs.style.width = '100%';
+		divs.style.height = '100%';
 
 		while(coords.length > 0) {
 			coord = coords.pop();
@@ -87,12 +89,6 @@ var Mosaic = function(opt) {
 			}
 
 			// free, create divs
-			div = document.createElement('div');
-			bg = document.createElement('div');
-			data = o.data.pop();
-
-			div.id = id++;
-			o.delegateData[div.id] = data;
 
 			// from this coordinate, try to "grow" the rectangle in one of four directions,
 			// with equal probability. growth stops once an obstacle is found.
@@ -157,29 +153,27 @@ var Mosaic = function(opt) {
 			// mark the positions as occupied
 			tagMapPositions(map, coord, dim);
 
+			div = document.createElement('div');
+			bg = document.createElement('div');
+
+			div.id = 'museic-tile-' + coord.y + '-' + coord.x;
+
 			// style div according to those limits
-			div.className = 'museic-tile';
+			div.style.position = 'absolute';
 			div.style.top = ((coord.y * 100) / o.y) + '%';
 			div.style.left = ((coord.x * 100) / o.x) + '%';
 			div.style.height = ((dim.h * 100) / o.y) + '%';
 			div.style.width = ((dim.w * 100) / o.x) + '%';
 
-			bg.className = 'museic-bg';
-			bg.style.top = bg.style.right = bg.style.bottom = bg.style.left = o.border + 'px';
-			bg.style.backgroundImage = "url('" + data.url + "')";
+			window.setTimeout(queryAndAppend(div, o.provider, {
+				x: coord.x,
+				y: coord.y,
+				w: dim.w,
+				h: dim.h
+			}), 0);
 
 			// save the div
-			div.appendChild(bg);
 			divs.appendChild(div);
-		}
-
-		// register event listeners
-		if (o.events) {
-			Object.keys(o.events).forEach(function(v) {
-				divs.addEventListener(v, function(event) {
-					o.events[v](event, o.delegateData[event.target.parentNode.id]);
-				});
-			});
 		}
 
 		o.elem.appendChild(divs);

@@ -1,29 +1,29 @@
 museic
 ======
 
-Museic is a Javascript image mosaic builder focused on randomness within a limited area.
+Museic is a Javascript mosaic builder focused on randomness within a pre-determined area.
+
+There's an image provider that makes this code an image mosaic builder, but you are encouraged to extend,
+modify or implement new providers to create mosaics of anything you like!
 
 
 Preview [here](https://rawgit.com/bugflux/museic/master/example/index.html)
 
 ## Usage
 
-Right now Mosaic can be invoked as a function and accepts a single object as parameter with all the options. First import the files.
+Right now Mosaic can be invoked as a function and accepts a single object as parameter with all the options.
+
+First import the files:
 
 ```html
 <script src="js/museic.js"></script>
-<link rel="stylesheet" type="text/css" href="css/museic.css">
+<script src="js/museic-image-provider.js"></script>
 ```
 
-Then call it.
+Then construct the provider and call it.
 
 ```javascript
-Mosaic({
-	elem: _div, // mandatory. the DOM element where the mosaic will be added
-
-	x: 6, // mandatory. max number of images horizontally
-	y: 5, // mandatory. max number of images vertically
-
+new MuseicImageProvider({
 	// mandatory. the list of, at least, x * y objects containing each image identified by "url"
 	// additional data may be added in other parameters for use in the event handlers.
 	data: [
@@ -36,6 +36,8 @@ Mosaic({
 		// ...
 	],
 
+	border: 5 // optional (default = 0). blank pixels around each image 
+
 	// optional. handlers for DOM events on each image. All DOM events are supported.
 	// handlers are of the form "function(event, data)", where 'event' is the original event
 	// triggered by the browserm and 'data' is the corresponding object provided in the initial
@@ -43,14 +45,31 @@ Mosaic({
 	events: {
 		click: _callback
 		// ...
-	},
+	}
+});
+
+Mosaic({
+	elem: _div, // mandatory. the DOM element where the mosaic will be added
+
+	x: 6, // mandatory. max number of images horizontally
+	y: 5, // mandatory. max number of images vertically
+
+	provider: provider, // mandatory. an element provider to fill the tiles
 
 	xMax: 6, // optional (default = x). maximum width (in grid elements) for each individual element
-	yMax: 5, // optional (default = y). maximum height (in grid elements) for each individual element
-
-	border: 5 // optional (default = 0). blank pixels around each image 
+	yMax: 5 // optional (default = y). maximum height (in grid elements) for each individual element
 });
 ```
+
+## Providers
+
+Providers need to implement a `get(params)` method that returns a single HTML element to place in the given tile. The `params` argument is an object with the following properties:
+
+* **x**: the XX coordinate computed for the tile
+* **y**: the YY coordinate computed for the tile
+* **w**: the width computed for the tile
+* **h**: the height computed for the tile
+
 
 ## Strategy
 
