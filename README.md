@@ -67,8 +67,8 @@ Providers need to implement a `get(params)` method that returns a single HTML el
 
 * **x**: the XX coordinate computed for the tile
 * **y**: the YY coordinate computed for the tile
-* **w**: the width computed for the tile
-* **h**: the height computed for the tile
+* **w**: the width computed for the tile (in number of tiles)
+* **h**: the height computed for the tile (in number of tiles)
 
 
 ## Strategy
